@@ -27,7 +27,7 @@ pipeline {
                 //SONAR_LOGIN = credentials('SONARCLOUD_TOKEN')
             //}
             //parallel {
-                stage('Integration Tests') {
+              //  stage('Integration Tests') {
                     steps {
                         gradlew('integrationTest')
                     }
@@ -36,7 +36,7 @@ pipeline {
                             junit '**/build/test-results/integrationTest/TEST-*.xml'
                         }
                     }
-                }
+                //}
             /*
                 stage('Code Analysis') {
                     steps {
