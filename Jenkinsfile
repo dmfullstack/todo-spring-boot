@@ -21,9 +21,10 @@ pipeline {
                 }
             }
         }
+        
         stage('Long-running Verification') {
             environment {
-                SONAR_LOGIN = credentials('SONARCLOUD_TOKEN')
+                //SONAR_LOGIN = credentials('SONARCLOUD_TOKEN')
             }
             parallel {
                 stage('Integration Tests') {
@@ -38,11 +39,12 @@ pipeline {
                 }
                 stage('Code Analysis') {
                     steps {
-                        gradlew('sonarqube')
+                       // gradlew('sonarqube')
                     }
                 }
             }
         }
+
         stage('Assemble') {
             steps {
                 gradlew('assemble')
@@ -68,7 +70,7 @@ pipeline {
     }
     post {
         failure {
-            mail to: 'benjamin.muschko@gmail.com', subject: 'Build failed', body: 'Please fix!'
+            mail to: 'dineshmetkari@gmail.com', subject: 'Build failed', body: 'Please fix!'
         }
     }
 }
